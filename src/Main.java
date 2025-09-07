@@ -113,7 +113,7 @@ public class Main {
             String reRoll = in.nextLine().trim().toLowerCase();
             if(!reRoll.equals("yes") && !reRoll.equals("y")){
                 tryAgain = false;
-                System.out.println("Thanks for trying out my dice roller!");
+                System.out.println("Thanks for using my random dice roller!");
             }
         }
 
