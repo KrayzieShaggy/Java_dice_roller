@@ -1,5 +1,6 @@
 // Importing Libraries
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -106,7 +107,37 @@ public class Main {
                     }
                     System.out.printf("The total sum of your rolls is: %s\n", total);
                 }
+                // Ask user if they would like to see stats
+                System.out.println("Would you like to see your stats? (highest, lowest, median) [yes/no]");
+                String showStats = in.nextLine().trim().toLowerCase();
 
+                if (showStats.equals("yes") || showStats.equals("y")) {
+
+                    // Find highest and lowest
+                    int highest = results[0];
+                    int lowest = results[0];
+                    for(int i = 1; i <results.length; i++) {
+                        if (results[i] > highest) highest = results[i];
+                        if (results[i] < lowest) lowest = results[i];
+                    }
+
+                    // Find Median
+                    int[] sorted = Arrays.copyOf(results, results.length);
+                    Arrays.sort(sorted);
+                    double median;
+                    int mid = sorted.length / 2;
+                    if (sorted.length % 2 == 1) {
+                        median = sorted[mid];
+                    } else {
+                        median = (sorted[mid - 1] + sorted[mid]) / 2.0;
+                    }
+
+                    // Print Results
+                    System.out.printf("Highest: %d\n" , highest);
+                    System.out.printf("Lowest: %d\n" , lowest);
+                    System.out.printf("Median: %.2f\n" , median);
+                    }
+                }
 
             }
             System.out.print("Would you like to roll again?\n");
@@ -119,4 +150,3 @@ public class Main {
 
     }
 
-}
